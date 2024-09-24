@@ -20,7 +20,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
       page: String(page),
     };
 
-    let params = new URLSearchParams(defaultParams);
+    const params = new URLSearchParams(defaultParams);
 
     router.push(`${pathname}?${params.toString()}`);
   };

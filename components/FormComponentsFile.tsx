@@ -1,4 +1,4 @@
-import { Control } from "react-hook-form";
+import { Control, FieldValues, Path } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -17,12 +17,15 @@ import { Input } from "./ui/input";
 
 import React from "react";
 
-type CustomFormFieldProps = {
-  name: string;
-  control: Control<any>;
+type CustomFormFieldProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
 };
 
-export function CustomFormFiled({ name, control }: CustomFormFieldProps) {
+export function CustomFormFiled<T extends FieldValues>({
+  name,
+  control,
+}: CustomFormFieldProps<T>) {
   return (
     <FormField
       control={control}
@@ -40,19 +43,19 @@ export function CustomFormFiled({ name, control }: CustomFormFieldProps) {
   );
 }
 
-type CustomFormSelect = {
-  name: string;
-  control: Control<any>;
+type CustomFormSelect<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
   items: string[];
   labelText?: string;
 };
 
-export function CustomFormSelect({
+export function CustomFormSelect<T extends FieldValues>({
   name,
   control,
   items,
   labelText,
-}: CustomFormSelect) {
+}: CustomFormSelect<T>) {
   return (
     <FormField
       control={control}

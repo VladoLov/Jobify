@@ -104,6 +104,7 @@ export async function getAllJobsAction({
     // return { jobs, count: 0, page: 1, totalPages: 0 };
     return { jobs, count: count, page: page, totalPages: totalPages };
   } catch (error) {
+    console.error(error);
     return { jobs: [], count: 0, page: 1, totalPages: 0 };
   }
 }
@@ -120,6 +121,7 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
     });
     return job;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
@@ -136,6 +138,7 @@ export async function getSingleJobAction(id: string): Promise<JobType | null> {
       },
     });
   } catch (error) {
+    console.error(error);
     job = null;
   }
   if (!job) {
@@ -162,6 +165,7 @@ export async function updateJobAction(
     });
     return job;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
@@ -197,6 +201,7 @@ export async function getStatsAction(): Promise<{
     };
     return defaultStats;
   } catch (error) {
+    console.error(error);
     redirect("/jobs");
   }
 }
@@ -219,7 +224,7 @@ export async function getChartsDataAction(): Promise<
       },
     });
 
-    let applicationsPerMonth = jobs.reduce((acc, job) => {
+    const applicationsPerMonth = jobs.reduce((acc, job) => {
       const date = dayjs(job.createdAt).format("MMM YY");
 
       const existingEntry = acc.find((entry) => entry.date === date);
@@ -235,6 +240,7 @@ export async function getChartsDataAction(): Promise<
 
     return applicationsPerMonth;
   } catch (error) {
+    console.error(error);
     redirect("/jobs");
   }
 }

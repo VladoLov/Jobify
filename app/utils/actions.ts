@@ -126,7 +126,7 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
   }
 }
 
-export async function getSingleJobAction(id: string): Promise<JobType | null> {
+/* export async function getSingleJobAction(id: string): Promise<JobType | null> {
   let job: JobType | null = null;
   const userId = authenticateAndRedirect();
 
@@ -145,6 +145,24 @@ export async function getSingleJobAction(id: string): Promise<JobType | null> {
     redirect("/jobs");
   }
   return job;
+} */
+
+export async function getSingleJobAction(id: string): Promise<JobType | null> {
+  const userId = authenticateAndRedirect();
+
+  try {
+    const job = await prisma.job.findUnique({
+      where: {
+        id,
+        clerkId: userId, // Ensures only the job belonging to the authenticated user is fetched
+      },
+    });
+
+    return job; // Return the found job or null if not found
+  } catch (error) {
+    console.error("Error fetching job:", error);
+    return null; // Return null on error
+  }
 }
 
 export async function updateJobAction(

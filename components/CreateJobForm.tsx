@@ -21,11 +21,11 @@ import { createJobAction } from "@/app/utils/actions";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
-const formSchema = z.object({
+/* const formSchema = z.object({
   username: z.string().min(3, {
     message: "Username must be at least 3 characters.",
   }),
-});
+}); */
 
 const CreateJobForm = () => {
   // 1. Define your form.

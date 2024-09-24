@@ -2,7 +2,6 @@ import React from "react";
 import LinksDropdown from "./LinksDropdown";
 import ThemeToggle from "./ThemeToggle";
 import { UserButton } from "@clerk/nextjs";
-import { User } from "lucide-react";
 
 const Navbar = () => {
   return (

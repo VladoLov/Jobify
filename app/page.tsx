@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Camera } from "lucide-react";
+
 import Logo from "../app/assets/logo.svg";
 import LandingImage from "../app/assets/main.svg";
 import Image from "next/image";
